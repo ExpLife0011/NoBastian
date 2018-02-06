@@ -7,27 +7,28 @@ Injected code automatically opens up a named pipe. Client connects to a pipe and
 
 Errors some people get when connecting to pipe:
 0x2 (ERROR_FILE_NOT_FOUND) - client couldn't open pipe because it doesn't exist.
+
 0x5 (ERROR_ACCESS_DENIED) - pipe exists, but client can't connect to pipe because client runs not as admin.
 
 Can't inject into host process? Use an injector with handle elevation capabilities, for example @Striekcarl's Loadlibrayy
 
-## Capabilities:
+**Capabilities:**
 - Force server to use certain handle
 - Force server to automatically select existing handle with certain access mask
 - Remote ReadProcessMemory, WriteProcessMemory, VirtualAllocEx calls
 - More features and bugfixes are coming soon!
 
-## Detection vectors:
+**Detection vectors:**
 - Presence of named pipe opened from inside whitelisted process and hence presence of shared memory section in the whitelisted process
 - Presence of a thread having it's context somewhere outside of any registered module, e.g somewhere in a manually mapped image. I'm saying "manually mapped" because i hope you're not retarded and not injecting into the host/server process via LoadLibraryA/LdrLoadDll call
 
-## Other ways of implementing RPC:
+**Other ways of implementing RPC:**
 - LPC/ALPC ports 
 - Shared memory section with a mutex or/and a spinlock 
 - Network sockets
 - RtlRemoteCall on any remote routine (it does direct thread context hijacking via NtSuspendThread -> GetThreadContext -> SetThreadContext -> NtResumeThread). IMO it's most flexible and simple way if done properly. Sadly, you won't find much information about RtlRemoteCall, but, if you decompile it, you can understand how to use it or you can code your own analogue that suits your needs. The function is undocumented and is exported via ntdll.dll. 
 
-## Patchability:
+**Patchability:**
 - It would be kinda difficult to painlessly strip csrss.exe/lsass.exe handles due to windows internal architecture, so this bypassing method will probably work for a long time
 
 UC Link : https://www.unknowncheats.me/forum/downloads.php?do=file&id=22073
