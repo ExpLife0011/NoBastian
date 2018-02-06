@@ -5,10 +5,9 @@ Universal Ring3 IPC based BattlEye/EAC/FaceIt/ESEA/MRAC bypass
 You should inject the server.dll into whitelisted process that has a handle to the game.
 Injected code automatically opens up a named pipe. Client connects to a pipe and uses it to perform synchronous IPC I/O to perform certain operations with an existing host's remote handle. Client process must have admin rights.
 
-Errors some people get when connecting to pipe:
-0x2 (ERROR_FILE_NOT_FOUND) - client couldn't open pipe because it doesn't exist.
-
-0x5 (ERROR_ACCESS_DENIED) - pipe exists, but client can't connect to pipe because client runs not as admin.
+**Errors some people get when connecting to pipe:**
+- 0x2 (ERROR_FILE_NOT_FOUND) - client couldn't open pipe because it doesn't exist.
+- 0x5 (ERROR_ACCESS_DENIED) - pipe exists, but client can't connect to pipe because client runs not as admin.
 
 Can't inject into host process? Use an injector with handle elevation capabilities, for example @Striekcarl's Loadlibrayy
 
