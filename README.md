@@ -30,9 +30,9 @@ Can't inject into host process? Use an injector with handle elevation capabiliti
 **Patchability:**
 - It would be kinda difficult to painlessly strip csrss.exe/lsass.exe handles due to windows internal architecture, so this bypassing method will probably work for a long time
 
-UC Link : https://www.unknowncheats.me/forum/downloads.php?do=file&id=22073
-
-Memory read/write test screenshot (included in ABClient/Main.cpp): https://image.prntscr.com/image/bbZnESi6RPW0-aVSMmx9SQ.png
+**Link:**
+- UC Link : https://www.unknowncheats.me/forum/downloads.php?do=file&id=22073
+- Memory read/write test screenshot (included in ABClient/Main.cpp): https://image.prntscr.com/image/bbZnESi6RPW0-aVSMmx9SQ.png
 
 The code is not a big deal at all and i don't pretend like it is. You can rewrite it from scratch in few hours. The concept has been proposed long time ago, implemented, and is being used by many people on this forum, but I've never seen copypaste-ready source so i decided to post mine. If you decide to C&P this, i suggest you atleast encrypting strings lol
 
